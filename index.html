@@ -1,178 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Terminal Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>user / control-panel</title>
 
 <style>
 :root {
-  --bg: #0d1117;
-  --panel: #161b22;
-  --border: #30363d;
-  --text: #c9d1d9;
-  --muted: #8b949e;
-  --green: #3fb950;
-  --blue: #58a6ff;
+  --bg:#0d1117;
+  --panel:#161b22;
+  --border:#30363d;
+  --text:#c9d1d9;
+  --muted:#8b949e;
+  --blue:#58a6ff;
 }
-
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial;
 }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+.nav{
+  height:56px;
+  background:var(--panel);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  padding:0 16px;
 }
-
-/* Main window */
-.window {
-  width: 92%;
-  max-width: 900px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-  overflow: hidden;
-  animation: fadeUp 0.8s ease;
+.nav strong{margin-right:20px}
+.container{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:calc(100vh - 56px);
 }
-
-/* Top bar */
-.topbar {
-  display: flex;
-  align-items: center;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border);
+.sidebar{
+  border-right:1px solid var(--border);
+  padding:16px;
 }
-
-.dots span {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 6px;
+.sidebar div{
+  padding:6px;
+  cursor:pointer;
+  border-radius:6px;
 }
-
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-
-.title {
-  margin-left: 10px;
-  color: var(--muted);
-  font-size: 0.85rem;
+.sidebar div:hover{
+  background:#21262d;
 }
-
-/* Terminal */
-.terminal {
-  padding: 20px;
-  line-height: 1.6;
-  font-size: 0.9rem;
+.main{
+  padding:20px;
 }
-
-.prompt {
-  color: var(--green);
+.tabs{
+  display:flex;
+  gap:16px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:16px;
 }
-
-.command {
-  color: var(--blue);
+.tab{
+  padding:8px;
+  cursor:pointer;
 }
-
-.output {
-  color: var(--muted);
-  margin-left: 10px;
+.tab.active{
+  border-bottom:2px solid var(--blue);
+  color:var(--blue);
 }
-
-.section {
-  margin-top: 20px;
-  padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: #0d1117;
+.box{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:16px;
 }
-
-.section h3 {
-  margin: 0 0 10px;
-  font-size: 0.9rem;
-  color: var(--blue);
+pre{
+  background:#0d1117;
+  padding:12px;
+  border-radius:6px;
+  overflow:auto;
 }
-
-button {
-  background: #21262d;
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
-  margin: 6px 6px 0 0;
-  transition: background 0.2s ease;
-}
-
-button:hover {
-  background: #30363d;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.hidden{display:none}
+.muted{color:var(--muted)}
 </style>
 </head>
+
 <body>
 
-<div class="window">
-  <div class="topbar">
-    <div class="dots">
-      <span class="red"></span>
-      <span class="yellow"></span>
-      <span class="green"></span>
-    </div>
-    <div class="title">user@github-pages: ~/control-panel</div>
+<div class="nav">
+  <strong>🐙 GitHub</strong>
+  user / control-panel
+</div>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div onclick="openFile('readme')">📄 README.md</div>
+    <div onclick="openFile('status')">📊 status.txt</div>
+    <div onclick="openFile('terminal')">🐧 terminal.sh</div>
   </div>
 
-  <div class="terminal">
-    <div>
-      <span class="prompt">user@linux</span>:<span class="command">~$</span> status
-    </div>
-    <div class="output">
-      System online • Secure connection • UI mode
+  <!-- Main -->
+  <div class="main">
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('code')">Code</div>
+      <div class="tab" onclick="switchTab('commits')">Commits</div>
+      <div class="tab" onclick="switchTab('issues')">Issues</div>
     </div>
 
-    <div class="section">
-      <h3>📱 Device Dashboard (UI Demo)</h3>
-      <button>Check Battery</button>
-      <button>View Storage</button>
-      <button>Screen Status</button>
-      <button>Network Info</button>
+    <!-- Code -->
+    <div id="code" class="box">
+      <h3>README.md</h3>
+      <p class="muted">This repository is a frontend-only GitHub clone UI.</p>
+      <pre>
+# control-panel
+
+A GitHub-style personal dashboard  
+Dark mode • Static • GitHub Pages  
+
+Features:
+- Repo UI
+- File tree
+- Tabs
+- Terminal-style interface
+      </pre>
     </div>
 
-    <div class="section">
-      <h3>⚙ System Controls</h3>
-      <button>Reload UI</button>
-      <button>Dark Mode</button>
-      <button>Logs</button>
+    <!-- Commits -->
+    <div id="commits" class="box hidden">
+      <p>🟢 Initial commit – setup UI</p>
+      <p>🟢 Added file explorer</p>
+      <p>🟢 Improved GitHub dark theme</p>
     </div>
 
-    <div class="section">
-      <h3>ℹ Info</h3>
-      <div class="output">
-        This is a frontend-only terminal-style dashboard.<br>
-        No real device access — safe, personal, aesthetic.
-      </div>
+    <!-- Issues -->
+    <div id="issues" class="box hidden">
+      <p class="muted">No issues opened 🎉</p>
     </div>
 
-    <div style="margin-top:20px; color:#666; font-size:0.75rem;">
-      © 2026 • GitHub Pages • Terminal UI
-    </div>
   </div>
 </div>
+
+<script>
+function switchTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+
+  ['code','commits','issues'].forEach(id=>{
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById(tab).classList.remove('hidden');
+}
+
+function openFile(file){
+  const box=document.getElementById('code');
+  if(file==='readme'){
+    box.innerHTML=`<h3>README.md</h3><pre># control-panel
+GitHub-style UI
+Frontend only
+Safe & static</pre>`;
+  }
+  if(file==='status'){
+    box.innerHTML=`<h3>status.txt</h3><pre>UI: ONLINE
+MODE: STATIC
+ACCESS: LOCAL</pre>`;
+  }
+  if(file==='terminal'){
+    box.innerHTML=`<h3>terminal.sh</h3><pre>$ ls
+README.md  status.txt  terminal.sh</pre>`;
+  }
+}
+</script>
 
 </body>
 </html>
