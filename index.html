@@ -104,4 +104,183 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Space</title>
+
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --card: #141417;
+      --text: #e6e6eb;
+      --soft: #a1a1aa;
+      --accent: #7c7cff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #111118, #000000 70%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      animation: slideUp 1s ease;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin: 0;
+      text-shadow: 0 0 20px rgba(124, 124, 255, 0.15);
+    }
+
+    header p {
+      margin-top: 10px;
+      color: var(--soft);
+      font-size: 1rem;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: var(--soft);
+      text-decoration: none;
+      margin: 0 14px;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      margin-bottom: 35px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    section p,
+    section li {
+      color: var(--soft);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>My Personal Space</h1>
+      <p>Quiet. Dark. Clean.</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        This is my personal website. A minimal, distraction-free place
+        where I experiment, learn, and build.
+      </p>
+    </section>
+
+    <section id="work">
+      <h2>Work</h2>
+      <ul>
+        <li>Projects — coming soon</li>
+        <li>Ideas — in progress</li>
+        <li>Experiments — always</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: yourname@example.com</p>
+    </section>
+
+    <footer>
+      © 2026 — Built on GitHub Pages
+    </footer>
+  </div>
+
+</body>
+</html>
+
 
