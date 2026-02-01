@@ -1,286 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terminal Dashboard</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-        }
+<style>
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --green: #3fb950;
+  --blue: #58a6ff;
+}
 
-        header {
-            padding: 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.4);
-        }
+* {
+  box-sizing: border-box;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-        nav {
-            margin-top: 10px;
-        }
+/* Main window */
+.window {
+  width: 92%;
+  max-width: 900px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  overflow: hidden;
+  animation: fadeUp 0.8s ease;
+}
 
-        nav a {
-            color: #00eaff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-        }
+/* Top bar */
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+.dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
 
-        main {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
 
-        section {
-            margin-bottom: 40px;
-        }
+.title {
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 
-        section h2 {
-            color: #00eaff;
-        }
+/* Terminal */
+.terminal {
+  padding: 20px;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.5);
-            font-size: 0.9rem;
-        }
-    </style>
+.prompt {
+  color: var(--green);
+}
+
+.command {
+  color: var(--blue);
+}
+
+.output {
+  color: var(--muted);
+  margin-left: 10px;
+}
+
+.section {
+  margin-top: 20px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0d1117;
+}
+
+.section h3 {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: var(--blue);
+}
+
+button {
+  background: #21262d;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  margin: 6px 6px 0 0;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #30363d;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-        <p>This is my personal space on the internet</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                Hi! I’m building my own website to learn, experiment, and share things I like.
-                This site is fully customizable and completely mine.
-            </p>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li>Project 1 – Coming soon</li>
-                <li>Project 2 – Coming soon</li>
-                <li>Project 3 – Coming soon</li>
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: yourname@example.com</p>
-            <p>Instagram / GitHub / X</p>
-        </section>
-    </main>
-
-    <footer>
-        © 2026 • My Personal Website
-    </footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Space</title>
-
-  <style>
-    :root {
-      --bg: #0b0b0d;
-      --card: #141417;
-      --text: #e6e6eb;
-      --soft: #a1a1aa;
-      --accent: #7c7cff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #111118, #000000 70%);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 1.2s ease;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      background: var(--card);
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-      animation: slideUp 1s ease;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    header h1 {
-      font-size: 2.6rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin: 0;
-      text-shadow: 0 0 20px rgba(124, 124, 255, 0.15);
-    }
-
-    header p {
-      margin-top: 10px;
-      color: var(--soft);
-      font-size: 1rem;
-    }
-
-    nav {
-      margin-top: 20px;
-    }
-
-    nav a {
-      color: var(--soft);
-      text-decoration: none;
-      margin: 0 14px;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    section {
-      margin-bottom: 35px;
-      animation: fadeUp 1.2s ease;
-    }
-
-    section h2 {
-      font-size: 1.4rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
-
-    section p,
-    section li {
-      color: var(--soft);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    ul {
-      padding-left: 18px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      color: #666;
-      font-size: 0.8rem;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <header>
-      <h1>My Personal Space</h1>
-      <p>Quiet. Dark. Clean.</p>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        This is my personal website. A minimal, distraction-free place
-        where I experiment, learn, and build.
-      </p>
-    </section>
-
-    <section id="work">
-      <h2>Work</h2>
-      <ul>
-        <li>Projects — coming soon</li>
-        <li>Ideas — in progress</li>
-        <li>Experiments — always</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: yourname@example.com</p>
-    </section>
-
-    <footer>
-      © 2026 — Built on GitHub Pages
-    </footer>
+<div class="window">
+  <div class="topbar">
+    <div class="dots">
+      <span class="red"></span>
+      <span class="yellow"></span>
+      <span class="green"></span>
+    </div>
+    <div class="title">user@github-pages: ~/control-panel</div>
   </div>
 
+  <div class="terminal">
+    <div>
+      <span class="prompt">user@linux</span>:<span class="command">~$</span> status
+    </div>
+    <div class="output">
+      System online • Secure connection • UI mode
+    </div>
+
+    <div class="section">
+      <h3>📱 Device Dashboard (UI Demo)</h3>
+      <button>Check Battery</button>
+      <button>View Storage</button>
+      <button>Screen Status</button>
+      <button>Network Info</button>
+    </div>
+
+    <div class="section">
+      <h3>⚙ System Controls</h3>
+      <button>Reload UI</button>
+      <button>Dark Mode</button>
+      <button>Logs</button>
+    </div>
+
+    <div class="section">
+      <h3>ℹ Info</h3>
+      <div class="output">
+        This is a frontend-only terminal-style dashboard.<br>
+        No real device access — safe, personal, aesthetic.
+      </div>
+    </div>
+
+    <div style="margin-top:20px; color:#666; font-size:0.75rem;">
+      © 2026 • GitHub Pages • Terminal UI
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
-
-
